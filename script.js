@@ -43,7 +43,7 @@ function fetchRepos() {
     fetch(`https://api.github.com/users/${username}`)
         .then(response => {
             const remainingRequests = response.headers.get('X-RateLimit-Remaining');
-            console.log(remainingRequests);
+          //  console.log(remainingRequests);
             if (remainingRequests !== null && parseInt(remainingRequests) < 1) {
                 throw new Error('API rate limit exceeded. Please try again later.');
             }
@@ -79,7 +79,7 @@ function fetchRepos() {
             alert(error);
         })
         .finally(() => toggleLoader(false));
-    console.log(totalPages);
+    //console.log(totalPages);
     const startIndex = (currentPage - 1) * reposPerPage;
     const apiUrl = `https://api.github.com/users/${username}/repos?per_page=${reposPerPage}&page=${currentPage}`;
     const paginationSection = document.getElementById('pagination');
@@ -87,7 +87,7 @@ function fetchRepos() {
     fetch(apiUrl)
         .then(response => {
             const remainingRequests = response.headers.get('X-RateLimit-Remaining');
-            console.log(remainingRequests);
+           // console.log(remainingRequests);
             if (remainingRequests !== null && parseInt(remainingRequests) < 1) {
                 throw new Error('API rate limit exceeded. Please try again later.');
             }
